@@ -2,6 +2,8 @@ import dayjs from "dayjs";
 import React, { useContext } from "react";
 import logo from "../assets/logo.png";
 import GlobalContext from "../context/GlobalContext";
+import home from "../components/Home"
+
 export default function CalendarHeader() {
   const { monthIndex, setMonthIndex } = useContext(GlobalContext);
   function handlePrevMonth() {
@@ -9,6 +11,9 @@ export default function CalendarHeader() {
   }
   function handleNextMonth() {
     setMonthIndex(monthIndex + 1);
+  }
+  function Home(){
+    return home
   }
   function handleReset() {
     setMonthIndex(
@@ -21,13 +26,13 @@ export default function CalendarHeader() {
     <header className="px-4 py-2 flex items-center">
       <img src={logo} alt="calendar" className="mr-2 w-12 h-12" />
       <h1 className="mr-10 text-xl text-gray-500 fond-bold">
-        Calendar
+        Calendario
       </h1>
       <button
         onClick={handleReset}
         className="border rounded py-2 px-4 mr-5"
       >
-        Today
+        Hoje
       </button>
       <button onClick={handlePrevMonth}>
         <span className="material-icons-outlined cursor-pointer text-gray-600 mx-2">
@@ -44,6 +49,12 @@ export default function CalendarHeader() {
           "MMMM YYYY"
         )}
       </h2>
+      <button
+        onClick={home}
+        className="border rounded py-2 px-6 mr-8 rigth 9px"
+      >
+        Dashboard
+      </button>
     </header>
   );
 }

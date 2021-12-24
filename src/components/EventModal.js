@@ -1,5 +1,6 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import GlobalContext from "../context/GlobalContext";
+import api from "../api"
 
 const labelsClasses = [
   "indigo",
@@ -64,6 +65,20 @@ export default function EventModal() {
     } else {
       dispatchCalEvent({ type: "push", payload: calendarEvent });
     }
+
+    useEffect(() => {
+      api
+        .post("localhost:8080/evento/"),{
+          nome: title,
+          descricao: description,
+          local: local,
+          participantes: participantes
+        }
+    })
+    .catch((err) => {
+      console.error("ops! ocorreu um erro" + err);
+    });
+    
 
 
 
