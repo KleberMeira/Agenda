@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import GlobalContext from "../context/GlobalContext";
 import api from "../api"
+import axios from "axios";
 
 const labelsClasses = [
   "indigo",
@@ -66,24 +67,32 @@ export default function EventModal() {
       dispatchCalEvent({ type: "push", payload: calendarEvent });
     }
 
-    useEffect(() => {
-      api
-        .post("localhost:8080/evento/"),{
-          nome: title,
-          descricao: description,
-          local: local,
-          participantes: participantes
-        }
-    })
-    .catch((err) => {
-      console.error("ops! ocorreu um erro" + err);
-    });
+
+    //INICIO DE IMPLEMENTACAO PARA COMUNICAÇÃO COM API 
+    //var resposta;
+
+    //await axios 
+      //  .post("localhost:8080/evento/"),
+       // {
+         // nome: title,
+         // descricao: description,
+        //local: local,
+         // participantes: participantes
+        //}
+        //.then((response) => {
+         // resposta = response.data.resposta;
+        //})
+        //.catch((error) => {
+        
+       // })
+
+    }
     
-
-
-
+    
+      
+    
     setShowEventModal(false);
-  }
+  
   return (
     <div className="h-screen w-full fixed left-0 top-0 flex justify-center items-center">
       <form className="bg-white rounded-lg shadow-2xl w-1/4">
